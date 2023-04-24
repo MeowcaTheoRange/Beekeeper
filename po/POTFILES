@@ -1,0 +1,8 @@
+data/xyz.trollcall.Beekeeper.desktop.in
+data/xyz.trollcall.Beekeeper.appdata.xml.in
+data/xyz.trollcall.Beekeeper.gschema.xml
+src/window.ui
+src/main.js
+src/window.js
+src/folders.js
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+	<name>Beekeeper</name>
+	<id>xyz.trollcall.Beekeeper.desktop</id>
+	<metadata_license>CC0-1.0</metadata_license>
+	<project_license></project_license>
+	<description>
+	  <p>No description</p>
+	</description>
+</component>

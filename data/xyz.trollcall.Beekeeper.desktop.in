@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Beekeeper
+Exec=xyz.trollcall.Beekeeper
+Icon=xyz.trollcall.Beekeeper
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true
