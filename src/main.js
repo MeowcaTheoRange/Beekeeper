@@ -32,29 +32,31 @@ export const BeekeeperApplication = GObject.registerClass(
             super({application_id: 'xyz.trollcall.Beekeeper', flags: Gio.ApplicationFlags.FLAGS_NONE});
 
             const quit_action = new Gio.SimpleAction({name: 'quit'});
-                quit_action.connect('activate', action => {
+            quit_action.connect('activate', action => {
                 this.quit();
             });
             this.add_action(quit_action);
-            this.set_accels_for_action('app.quit', ['<primary>q']);
+            this.set_accels_for_action('app.quit', ['<primary>q', 'Escape']);
 
             const show_about_action = new Gio.SimpleAction({name: 'about'});
             show_about_action.connect('activate', action => {
-                let aboutParams = {
-                    authors: [
-                        'MeowcaTheoRange'
-                    ],
+                const aboutDialog = new Adw.AboutWindow({
+                    developer_name: 'MeowcaTheoRange',
+                    copyright: '\u00A9 2023 MeowcaTheoRange',
                     version: '0.1.0',
-                    logo_icon_name: 'xyz.trollcall.Beekeeper',
+                    application_icon: 'xyz.trollcall.Beekeeper',
                     license_type: Gtk.License.APACHE_2_0,
-                    program_name: 'Beekeeper',
+                    application_name: 'Beekeeper',
                     transient_for: this.active_window,
+                    website: 'https://trollcall.xyz/',
                     modal: true,
-                };
-                const aboutDialog = new Gtk.AboutDialog(aboutParams);
+                    comments: `Beekeeper is a productive project manager made for easy access to your project directories.`
+                });
                 aboutDialog.present();
             });
             this.add_action(show_about_action);
+
+            this.#loadSettings();
         }
 
         vfunc_activate() {
@@ -64,6 +66,10 @@ export const BeekeeperApplication = GObject.registerClass(
                 active_window = new BeekeeperWindow(this);
 
             active_window.present();
+        }
+
+        #loadSettings() {
+          globalThis.settings = new Gio.Settings({ schemaId: this.applicationId });
         }
     }
 );

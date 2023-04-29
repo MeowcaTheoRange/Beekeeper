@@ -1,3 +1,14 @@
 #main-button {
   background-color: @accent_bg_color;
+  color: @accent_fg_color;
+}
+
+#entry-box {
+    font-weight: bold;
+    border-radius: 32px;
+    transition: background-color 0.25s;
+}
+
+#entry-box:not(:focus-within) {
+    background-color: transparent;
 }

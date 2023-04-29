@@ -1,7 +1,7 @@
 {
     "app-id" : "xyz.trollcall.Beekeeper",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "master",
+    "runtime-version" : "44",
     "sdk" : "org.gnome.Sdk",
     "command" : "xyz.trollcall.Beekeeper",
     "finish-args" : [
@@ -30,9 +30,12 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "file:///home/theorange/Projects/Beekeeper"
+                    "url" : "file:///home/mtr/Projects/Builder/projects/Beekeeper"
                 }
             ]
         }
-    ]
+    ],
+    "build-options" : {
+        "env" : {        }
+    }
 }

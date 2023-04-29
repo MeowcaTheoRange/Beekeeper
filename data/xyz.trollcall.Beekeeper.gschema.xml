@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schemalist gettext-domain="beekeeper">
+<schemalist>
 	<schema id="xyz.trollcall.Beekeeper" path="/xyz/trollcall/Beekeeper/">
+	  <key name="pathname" type="s">
+	    <default>"/"</default>
+      <summary>Current path</summary>
+      <description>The current path Beekeeper looks in.</description>
+    </key>
 	</schema>
 </schemalist>

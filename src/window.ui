@@ -3,17 +3,31 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.1"/>
   <template class="BeekeeperWindow" parent="GtkApplicationWindow">
-    <property name="default-height">600</property>
+    <property name="default-height">0</property>
     <property name="default-width">400</property>
     <property name="title">Beekeeper</property>
     <child type="titlebar">
       <object class="GtkHeaderBar" id="header_bar">
+        <property name="decoration-layout">:close</property>
         <child type="start">
           <object class="GtkMenuButton">
             <property name="icon-name">open-menu-symbolic</property>
             <property name="menu-model">primary_menu</property>
+            <style>
+              <class name="circular"/>
+            </style>
           </object>
         </child>
+        <property name="title-widget">
+          <object class="GtkEntry" id="entryBox">
+            <property name="name">entry-box</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="xalign">0.5</property>
+            <property name="width-chars">20</property>
+            <property name="placeholder-text">/home/...</property>
+          </object>
+        </property>
         <style>
           <class name="flat"/>
         </style>
@@ -23,9 +37,10 @@
       <object class="GtkBox" id="label">
         <property name="orientation">1</property>
         <child>
-          <object class="GtkScrolledWindow">
+          <object class="GtkScrolledWindow" id="emergencyProp">
             <property name="hscrollbar-policy">never</property>
-            <property name="min-content-height">400</property>
+            <property name="propagate-natural-height">1</property>
+            <property name="max-content-height">600</property>
             <property name="min-content-width">400</property>
             <child>
               <object class="AdwClamp" id="child">
@@ -35,10 +50,11 @@
                 <property name="tightening-threshold">400</property>
                 <property name="vexpand">True</property>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkBox" id="holderBox">
                     <property name="margin-bottom">16</property>
                     <property name="margin-top">8</property>
                     <property name="orientation">1</property>
+                    <property name="valign">center</property>
                     <property name="spacing">8</property>
                     <child>
                       <object class="GtkLabel" id="userName">
@@ -58,43 +74,6 @@
                         </style>
                       </object>
                     </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label">Continue</property>
-                        <property name="xalign">0</property>
-                        <style>
-                          <class name="heading"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkListBox" id="bigBox">
-                        <property name="name">main-button</property>
-                        <property name="selection-mode">browse</property>
-                        <style>
-                          <class name="boxed-list"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label">Earlier</property>
-                        <property name="xalign">0</property>
-                        <style>
-                          <class name="heading"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkListBox" id="folders">
-                        <property name="margin-end">8</property>
-                        <property name="margin-start">8</property>
-                        <property name="selection-mode">browse</property>
-                        <style>
-                          <class name="boxed-list"/>
-                        </style>
-                      </object>
-                    </child>
                   </object>
                 </child>
               </object>
@@ -107,10 +86,6 @@
 
   <menu id="primary_menu">
     <section>
-      <item>
-        <attribute name="label" translatable="yes">_Preferences</attribute>
-        <attribute name="action">app.preferences</attribute>
-      </item>
       <item>
         <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
         <attribute name="action">win.show-help-overlay</attribute>
